@@ -1,19 +1,20 @@
 import React from 'react';
 
 function TournamentCard({ tournament }) {
-  // US3: Status color mapping
   const statusClass = tournament.status === "On Going" ? "status-on-going" : "status-upcoming";
 
   return (
     <div className="tournament-card">
-      <div className="header">
+      <div className="card-header">
         <h3>{tournament.title}</h3>
         <span className={`status-badge ${statusClass}`}>
           {tournament.status}
         </span>
       </div>
-      <p className="description">{tournament.description}</p>
-      <div className="footer-info">
+      
+      <p>{tournament.description}</p>
+      
+      <div className="card-footer">
         <span>👤 {tournament.participants}</span>
         <span>📍 {tournament.location}</span>
       </div>

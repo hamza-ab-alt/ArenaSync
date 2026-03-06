@@ -1,34 +1,46 @@
-:root {
-  --primary-bg: #f8f9fe;
-  --card-bg: #ffffff;
-  --on-going: #4caf50; /* Khder (US3) */
-  --upcoming: #2196f3;  /* Azreq (US3) */
-  --text-main: #1a1a1a;
-  --text-muted: #888888;
-}
-
-.main-container {
-  background-color: var(--primary-bg);
-  min-height: 100vh;
-  padding: 20px;
+/* src/App.css */
+body {
+  margin: 0;
+  padding: 0;
+  background-color: #f3f4f6;
   font-family: sans-serif;
 }
 
-.tournament-card {
-  background: var(--card-bg);
-  border-radius: 25px;
+.main-container {
   padding: 20px;
-  margin-bottom: 20px;
-  box-shadow: 0 4px 15px rgba(0,0,0,0.05); /* Shadow dyal l-maquette */
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.tournaments-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 20px;
+  margin-top: 20px;
+}
+
+.tournament-card {
+  background: white;
+  border-radius: 20px;
+  padding: 20px;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+  display: flex;
+  flex-direction: column;
+}
+
+.card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
 }
 
 .status-badge {
   padding: 5px 12px;
-  border-radius: 12px;
+  border-radius: 20px;
+  font-size: 12px;
   color: white;
-  font-size: 0.75rem;
-  font-weight: bold;
 }
 
-.status-on-going { background-color: var(--on-going); }
-.status-upcoming { background-color: var(--upcoming); }
+.status-on-going { background-color: #22c55e; }
+.status-upcoming { background-color: #3b82f6; }
