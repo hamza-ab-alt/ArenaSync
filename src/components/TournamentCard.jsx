@@ -15,7 +15,7 @@ function TournamentCard({ tournament }) {
       <p>{tournament.description}</p>
       
       <div className="card-footer">
-        <span>👤 {tournament.participants}</span>
+        {/* <span>👤 {tournament.participants}</span> */}
         <span>📍 {tournament.location}</span>
       </div>
     </div>

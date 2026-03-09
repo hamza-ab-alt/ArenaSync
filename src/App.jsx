@@ -1,5 +1,5 @@
 import React from 'react';
-import { tournamentsData } from './data/tournamentDB'; // L-path s7i7 3la hsab l-image
+import { tournamentData } from './data/tournamentDB'; // L-path s7i7 3la hsab l-image
 import TournamentCard from './components/TournamentCard'; // L-path s7i7
 import './App.css'; // Import dial l-styles
 function App() {
@@ -15,7 +15,7 @@ function App() {
 
       {/* Main Grid (US1) */}
       <main className="tournaments-grid">
-        {tournamentsData.map((tournament) => (
+        {tournamentData.map((tournament) => (
           <TournamentCard key={tournament.id} tournament={tournament} />
         ))}
       </main>
