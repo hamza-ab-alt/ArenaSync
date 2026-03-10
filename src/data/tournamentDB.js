@@ -3,7 +3,7 @@ export const tournamentData = [
     id: "t1",
     title: "Shuttle Masters League",
     sport: "Badminton",
-    status: "On Going", // UtilisÃ© pour la couleur du StatusBadge (ex: success/green)
+    status: "On Going", 
     date: "October 12, 2025",
     location: "Badminton Hall 1",
     description: "Top players battle it out with skillful rallies and powerful smashes.",
@@ -21,7 +21,7 @@ export const tournamentData = [
     id: "t2",
     title: "Hoops Championship",
     sport: "Basketball",
-    status: "Upcoming", // UtilisÃ© pour la couleur du StatusBadge (ex: primary/blue)
+    status: "Upcoming", 
     date: "November 2, 2025",
     location: "Indoor Arena - Court A",
     description: "Intense games filled with teamwork, speed, and spectacular shots.",

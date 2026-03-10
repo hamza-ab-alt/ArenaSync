@@ -1,26 +1,29 @@
-import React from 'react';
-import { tournamentData } from './data/tournamentDB'; // L-path s7i7 3la hsab l-image
-import TournamentCard from './components/TournamentCard'; // L-path s7i7
-import './App.css'; // Import dial l-styles
+import React from "react";
+import { tournamentData } from "./data/tournamentDB";
+import TournamentCard from "./components/TournamentCard";
+import "./App.css";
+
 function App() {
   return (
-    <div className="main-container">
-      {/* Header */}
+    <div className="main-app">
       <header className="header-section">
         <h1>Good Morning, Samuel Walker!</h1>
         <div className="search-container">
-          <input type="text" placeholder="Search" className="search-input" />
+          <input
+            type="text"
+            placeholder="Search tournaments..."
+            className="search-input"
+          />
         </div>
       </header>
 
-      {/* Main Grid (US1) */}
       <main className="tournaments-grid">
-        {tournamentData.map((tournament) => (
-          <TournamentCard key={tournament.id} tournament={tournament} />
-        ))}
+        {tournamentData &&
+          tournamentData.map((tournament) => (
+            <TournamentCard key={tournament.id} tournament={tournament} />
+          ))}
       </main>
 
-      {/* Navigation */}
       <nav className="bottom-nav">
         <button className="nav-btn active">Home</button>
         <button className="nav-btn">Tournament</button>
