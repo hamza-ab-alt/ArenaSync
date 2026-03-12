@@ -1,9 +1,17 @@
-import React from "react";
-import { tournamentData } from "./data/tournamentDB";
+import React, { useState } from "react";
+import { tournamentData as initialData } from "./data/tournamentDB";
 import TournamentCard from "./components/TournamentCard";
 import "./App.css";
 
 function App() {
+  const [searchTerm, setSearchTerm] = useState("");
+  const [tournaments, setTournaments] = useState(initialData);
+
+  // US5: Live Search Logic
+  const filteredTournaments = tournaments.filter((t) =>
+    t.title.toLowerCase().includes(searchTerm.toLowerCase())
+  );
+
   return (
     <div className="main-app">
       <header className="header-section">
@@ -13,15 +21,20 @@ function App() {
             type="text"
             placeholder="Search tournaments..."
             className="search-input"
+            value={searchTerm}
+            onChange={(e) => setSearchTerm(e.target.value)}
           />
         </div>
       </header>
 
       <main className="tournaments-grid">
-        {tournamentData &&
-          tournamentData.map((tournament) => (
+        {filteredTournaments.length > 0 ? (
+          filteredTournaments.map((tournament) => (
             <TournamentCard key={tournament.id} tournament={tournament} />
-          ))}
+          ))
+        ) : (
+          <p style={{ color: "white", textAlign: "center" }}>No tournaments found.</p>
+        )}
       </main>
 
       <nav className="bottom-nav">
