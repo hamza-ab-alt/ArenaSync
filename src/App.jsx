@@ -7,7 +7,43 @@ function App() {
   const [searchTerm, setSearchTerm] = useState("");
   const [tournaments, setTournaments] = useState(initialData);
 
-  // US5: Live Search Logic
+
+  const addParticipantToTournament = (tId, name) => {
+    const updated = tournaments.map((t) => {
+      if (t.id === tId) {
+        const newP = {
+          id: Date.now().toString(),
+          name: name,
+          status: "Confirmed",
+          avatar: `https://i.pravatar.cc/150?u=${Date.now()}`
+        };
+        
+        const [current, max] = t.participantsCount.split('/');
+        const newCount = `${parseInt(current) + 1}/${max}`;
+        
+        return { ...t, participants: [...t.participants, newP], participantsCount: newCount };
+      }
+      return t;
+    });
+    setTournaments(updated);
+  };
+
+ 
+  const removeParticipantFromTournament = (tId) => {
+    const updated = tournaments.map((t) => {
+      if (t.id === tId) {
+        const [current, max] = t.participantsCount.split('/');
+        const newCount = `${parseInt(current) - 1}/${max}`;
+     
+        const newParticipants = [...t.participants];
+        newParticipants.pop();
+        return { ...t, participants: newParticipants, participantsCount: newCount };
+      }
+      return t;
+    });
+    setTournaments(updated);
+  };
+
   const filteredTournaments = tournaments.filter((t) =>
     t.title.toLowerCase().includes(searchTerm.toLowerCase())
   );
@@ -21,20 +57,20 @@ function App() {
             type="text"
             placeholder="Search tournaments..."
             className="search-input"
-            value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
           />
         </div>
       </header>
 
       <main className="tournaments-grid">
-        {filteredTournaments.length > 0 ? (
-          filteredTournaments.map((tournament) => (
-            <TournamentCard key={tournament.id} tournament={tournament} />
-          ))
-        ) : (
-          <p style={{ color: "white", textAlign: "center" }}>No tournaments found.</p>
-        )}
+        {filteredTournaments.map((t) => (
+          <TournamentCard 
+            key={t.id} 
+            tournament={t} 
+            onRegister={addParticipantToTournament}
+            onUnregister={removeParticipantFromTournament}
+          />
+        ))}
       </main>
 
       <nav className="bottom-nav">
